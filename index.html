@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Meta tags Obrigatórias -->
+    <meta charset="utf-8">
+    <meta name="description" content="Inicia uma conversa por whatsapp sem precisar colocar número nos contatos">
+    <meta name="keywords" content="WhatsApp, iniciar conversa,  ">
+    <meta name="author" content="Nelson Cristiano Santos Jucoski">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <link rel="icon" href="https://static.whatsapp.net/rsrc.php/v3/yP/r/rYZqPCBaG70.png">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+    <!--  fontes e inones https://fontawesome.com/ -->
+    <script src="https://kit.fontawesome.com/22a08da1db.js" crossorigin="anonymous"></script>
+    <!--jquery auto complete -->
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+    <title>Iniciar conversa WhatsApp</title>
+    <style>
+        footer {
+            height: 3.0em;
+            padding-top: 0.8em;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- JavaScript (Opcional) -->
+    <!-- jQuery primeiro, depois Popper.js, depois Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+    <div class="container-fluid">
+
+        <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-success rounded shadow-sm">
+            <div class="lh-100">
+                <h3 class="mb-0 text-white lh-100"><i class="fa-brands fa-whatsapp"></i> Iniciar Conversa Whatsapp </h3>
+            </div>
+        </div>
+        <div>
+            <p>Somente para números do Brasil.</p>
+        </div>
+
+        <form action="" method="POST">
+            <div class="form-group row">
+                <label class="col-sm-1 col-form-label">Fone:</label>
+                <div class="col-sm-2">
+                    <input class="form-control" type="tel" name="" id="phone" placeholder="(00) 00000-0000"
+                        maxlength="15" onkeyup="mask(this)" autofocus>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="inp_submit" class="col-sm-1 col-form-label"></label>
+                <div class="col-sm-2">
+                    <input type="button" class="btn btn-success" value="Iniciar Conversa" onclick="whatsapp()">
+                </div>
+            </div>
+            <div class="alert alert-danger" role="alert" id="alerta" style="display: none;">
+                Um simples alerta danger. Olha só!
+            </div>
+        </form>
+
+    </div>
+    <footer class="fixed-bottom text-white bg-success text-center">
+        Desenvolvido por <a href="https://web.whatsapp.com/send?phone=5548984799374&text=" target="_blank"
+            class="badge badge-light">Nelson Jucoski</a>
+    </footer>
+</body>
+
+
+<script>
+    var alerta = document.getElementById('alerta');
+    //exemplo: https://wbruno.com.br/expressao-regular/mascara-campo-de-telefone-em-javascript-com-regex-nono-digito-telefones-sao-paulo/
+    function mtel(v) {
+        v = v.replace(/\D/g, ""); //Remove tudo o que nÃ£o Ã© dÃ­gito
+        v = v.replace(/^(\d{2})(\d)/g, "($1) $2"); //Coloca parÃªnteses em volta dos dois primeiros dÃ­gitos
+        v = v.replace(/(\d)(\d{4})$/, "$1-$2"); //Coloca hÃ­fen entre o quarto e o quinto dÃ­gitos
+        return v;
+    }
+
+    function mask(p) {
+        let fone = p;
+        fone.value = mtel(fone.value);
+        alerta.style.display = "none";
+    }
+
+    function whatsapp() {
+        let fone = document.getElementById('phone');
+
+
+        if (fone.value.length <= 13) {
+            alerta.innerText = "ATENÇÃO: Corrija campo telefone"
+            alerta.style.display = "initial"
+            fone.focus();
+        } else {
+
+            fone = fone.value.replace(/\D/g, "");
+            window.open(`https://web.whatsapp.com/send?phone=55${fone}`);
+            //window.open(`https://wa.me/+55${fone}`);
+            window.parent.location = window.parent.location.href;
+        }
+
+    }
+</script>
+
+
+</html>
