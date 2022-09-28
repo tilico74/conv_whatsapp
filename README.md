@@ -1,8 +1,8 @@
-#Iniciar conversa WhatsApp sem precisar adicionar contato.
+# Iniciar conversa WhatsApp sem precisar adicionar contato.
 
-Projeto simples desenvolvido para Sunamita Oliveira da Silva
-Abre uma nova comversa no WhataApp sem precisar criar um novo contato na sua lista de contatos.
+Projeto simples desenvolvido para Sunamita Oliveira da Silva.
 
+Abre uma nova comversa no WhatsApp sem precisar criar um novo contato na sua lista de contatos.
 
 Responsividade mobile e desktop.
 
