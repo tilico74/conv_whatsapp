@@ -2,7 +2,7 @@
 
 Projeto simples desenvolvido para Sunamita Oliveira da Silva.
 
-Abre uma nova comversa no WhatsApp sem precisar criar um novo contato na sua lista de contatos.
+Abre uma nova conversa no WhatsApp sem precisar criar um novo contato na sua lista de contatos.
 
 Responsividade mobile e desktop.
 
